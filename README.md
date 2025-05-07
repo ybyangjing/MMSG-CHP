@@ -9,7 +9,7 @@ This is the official PyTorch code for the paper:
 Fig. 1.  Content delivery services under UDNs by collecting and analyzing the content delivery behaviors of each small region in the edge layer (II), the main types of services present in different regions are obtained (III), which are further transmitted to the model for training to derive the hotspot results, which will in turn enable the central cloud servers to target and push the
  relevant content to the edge servers (IV).
 <p align="center">
-  <img src="Fig1.pdf"alt=""  align=center />
+  <img src="[Fig1.pdf](https://github.com/ybyangjing/MMSG-CHP/blob/main/Fig1.pdf)"alt=""  align=center />
 </p>
 
 
