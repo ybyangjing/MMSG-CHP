@@ -1,4 +1,3 @@
-# Feature-Compatible Embeddings
 This is the official PyTorch code for the paper:
 
 **MMSG-CHP:A Multi-factor Mamba-Enhanced Spatio-temporal Graph Convolution Framework for CDSs Hotspot Prediction in Ultra-Dense Network Environments.**
