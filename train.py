@@ -40,11 +40,6 @@ if __name__ == '__main__':
     parser.add_argument('--n_feat_path', type=str, default=r"/media/zy/UBUNTU 20_0/augcos_n_feat_589.pkl")
     
     parser.add_argument('--e_feat_path', type=str, default=r"/media/zy/UBUNTU 20_0/augcos_e_feat_589.pkl")
-    # 9 periods for train,Time Window is about 1 week
-    # parser.add_argument('--label_path', type=str, default=r"/media/zy/UBUNTU 20_0/daugcos_fourlabel_cate_2.pkl")
-    # parser.add_argument('--graphs_path', type=str, default=r"/media/zy/UBUNTU 20_0/daugcos_four_net_cate_2.pkl")
-    # parser.add_argument('--n_feat_path', type=str, default=r"/media/zy/UBUNTU 20_0/daugcos_four_nfeat_cate_2.pkl")
-    # parser.add_argument('--e_feat_path', type=str, default=r"/media/zy/UBUNTU 20_0/daugcos_four_efeat_cate_2.pkl")
     args = parser.parse_args()
     k = args.period
     units.set_k(args.period)
@@ -64,13 +59,13 @@ if __name__ == '__main__':
     print(hot_rate)
 
     # train, test split
-    n = len(dgls)  # 图的个数
+    n = len(dgls)  
     print('num of st-nets = {}'.format(n))
     split = int(n * .8)
-    index = np.arange(n) #创建0到n-1数组
+    index = np.arange(n) 
     np.random.seed(50)
-    np.random.shuffle(index)  # 把index的顺序打乱，原地打乱
-    train_index, test_index = index[:split], index[split:]  # 随机80%训练集，随机20%测试集
+    np.random.shuffle(index)  
+    train_index, test_index = index[:split], index[split:]  
 
     # prep labels
     train_labels = labels[train_index]
@@ -79,16 +74,16 @@ if __name__ == '__main__':
 
     # prep input data
     trainGs, testGs = [dgls[i] for i in train_index], [dgls[i] for i in test_index]
-    testGs = [dgl.batch([dgl.DGLGraph(u[i]) for u in testGs]) for i in range(k)]  # 将相同时间不同地理位置的图合并成一个大图，一共9张图
+    testGs = [dgl.batch([dgl.DGLGraph(u[i]) for u in testGs]) for i in range(k)]  
     train_n_feat, test_n_feat = [n_feat[i] for i in train_index], [n_feat[i] for i in test_index]
-    test_n_feat = [torch.FloatTensor(np.concatenate([inp[i] for inp in test_n_feat])) for i in range(k)] # 得到一个包含了 k 个张量的列表
-    # np.concatenate是将多个序列沿着指定的轴进行连接，并返回连接后的数组
+    test_n_feat = [torch.FloatTensor(np.concatenate([inp[i] for inp in test_n_feat])) for i in range(k)] 
+
 
     train_e_feat, test_e_feat = [e_feat[i] for i in train_index], [e_feat[i] for i in test_index]
-    test_e_feat = [torch.FloatTensor(np.concatenate([inp[i] for inp in test_e_feat])) for i in range(k)]  # 得到一个包含了 k 个张量的列表
+    test_e_feat = [torch.FloatTensor(np.concatenate([inp[i] for inp in test_e_feat])) for i in range(k)]  
 
     data = MyData(trainGs, train_n_feat, train_e_feat, train_labels)
-    data_loader = DataLoader(data, batch_size=1000, shuffle=False, collate_fn=collate_fn_old) #DataLoader是pytorch的类
+    data_loader = DataLoader(data, batch_size=1000, shuffle=False, collate_fn=collate_fn_old) 
     warnings.filterwarnings("ignore")
     '''*************************************************************************************************************'''
 
