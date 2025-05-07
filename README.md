@@ -16,7 +16,6 @@ Fig. 1.  Content delivery services under UDNs by collecting and analyzing the co
 The following packages are required to run the scripts:
 
 - [torch](https://github.com/pytorch/pytorch)
-- [torchvision](https://github.com/pytorch/vision)
 - [tqdm](https://github.com/tqdm/tqdm)
 - [numpy](https://github.com/numpy/numpy)
 
