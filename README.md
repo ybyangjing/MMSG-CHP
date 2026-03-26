@@ -2,7 +2,7 @@ This is the official PyTorch code for the paper:
 
 **MMSG-CHP:A Multi-factor Mamba-Enhanced Spatio-temporal Graph Convolution Framework for CDSs Hotspot Prediction in Ultra-Dense Network Environments.**
 
-**Yang Zhao**, **Jing Yang**,  **Yixiong Feng**,  **Xiaoli Ruan**,  **Chengjiang Li**, **Zhidong Su**, **Michael Negnevitsky**
+**Yang Zhao**, **Jing Yang**,  **Yixiong Feng**,  **Xiaoli Ruan**,  **Chengjiang Li**, **Zhidong Su**
 
 **This is the overall methodology diagram of the paper:**
 
